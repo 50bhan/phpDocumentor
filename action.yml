@@ -1,0 +1,11 @@
+  name: 'phpDocumentor'
+  description: 'Builds a static webpage from your docblocks'
+  inputs:
+    arguments:  # id of input
+      description: 'All commandline arguments passed to phpdocumentor'
+      required: true
+  runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+      - ${{ inputs.arguments }}

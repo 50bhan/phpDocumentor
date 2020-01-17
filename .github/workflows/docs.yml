@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Publish to Registry
+      - name: Build
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: phpdocumentor/phpdocumentor/docs.phpdoc.org
@@ -13,3 +13,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           context: docs
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: ../../ # use this repo as an action
+        with:
+          arguments: --template=clean --config=data/examples/MariosPizzeria/phpdoc.xml --target=build/clean
