@@ -17,6 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: ../../ # use this repo as an action
+      - uses: ./ # use this repo as an action
         with:
           arguments: --template=clean --config=data/examples/MariosPizzeria/phpdoc.xml --target=build/clean
