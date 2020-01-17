@@ -8,6 +8,7 @@ features
 tests
 tools
 var
+vendor
 
 *.md
 behat.yml
