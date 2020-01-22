@@ -1,0 +1,23 @@
+name: 'docker deploy'
+description: 'Calls webhook to deploy docker image'
+inputs:
+  image:
+    description: 'image url to push'
+    required: true
+  tag:
+    description: 'tag to push'
+    required: false
+    default: "latest"
+
+runs:
+  using: 'docker'
+  image: 'curlimages/curl:latest'
+  args:
+    - '--silent'
+    - '--show-error'
+    - '--fail'
+    - '-X'
+    - 'POST'
+    - '-d'
+    - '{"name": "${{ inputs.image }}", "tag": "${{ inputs.tag }}"}'
+    - 'http://178.128.141.120:9300/v1/webhooks/native'
